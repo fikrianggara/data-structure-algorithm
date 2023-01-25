@@ -23,11 +23,8 @@ func dynamicSequenceLinkedList() {
 	ll1.insert(9)
 
 	ll1.traverse()
-
-	ll1.insert_at(2, 10)
-
+	ll1.reverse()
 	ll1.traverse()
-
 }
 func main() {
 	// staticSequenceArray()

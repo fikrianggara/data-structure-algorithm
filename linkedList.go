@@ -101,3 +101,27 @@ func (l *singlyLinkedList) delete_at(pos int) {
 	prevNode.next = l.getAt(pos).next
 	l.len--
 }
+
+func (l *singlyLinkedList) reverse() {
+	if l.len <= 0 {
+		return
+	}
+	if l.len == 1 {
+		return
+	}
+
+	tempPtr := l.head
+	var prevNode *sllNode
+
+	for tempPtr.next != nil {
+
+		tempNode := tempPtr
+		tempPtr = tempPtr.next
+		tempNode.next = prevNode
+		l.head = tempPtr
+		prevNode = tempNode
+		fmt.Println("tempNode :", tempNode, ", tempPtr :", tempPtr, ", prev :", prevNode)
+	}
+	tempPtr.next = prevNode
+
+}
