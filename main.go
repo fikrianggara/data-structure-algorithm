@@ -15,7 +15,22 @@ func staticSequenceArray() {
 	fmt.Println("items :", static1.iter_seq())
 }
 
+func dynamicSequenceLinkedList() {
+	ll1 := singlyLinkedList{}
+	ll1.insert(3)
+	ll1.insert(4)
+	ll1.insert(54)
+	ll1.insert(9)
+
+	ll1.traverse()
+
+	ll1.insert_at(2, 10)
+
+	ll1.traverse()
+
+}
 func main() {
-	staticSequenceArray()
+	// staticSequenceArray()
+	dynamicSequenceLinkedList()
 
 }
