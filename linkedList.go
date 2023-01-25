@@ -12,6 +12,28 @@ type singlyLinkedList struct {
 	len  int
 }
 
+func (l *singlyLinkedList) getAt(pos int) *sllNode {
+	ptr := l.head
+	if pos < 0 {
+		return ptr
+	}
+	if pos > (l.len - 1) {
+		return nil
+	}
+	for i := 0; i < pos; i++ {
+		ptr = ptr.next
+	}
+	return ptr
+}
+
+func (l *singlyLinkedList) traverse() {
+	ptr := l.head
+	for i := 0; i < l.len; i++ {
+		fmt.Println("Node :", ptr)
+		ptr = ptr.next
+	}
+}
+
 func (l *singlyLinkedList) insert(item int) {
 	node := sllNode{item: item}
 
@@ -62,24 +84,20 @@ func (l *singlyLinkedList) insert_at(pos int, item int) {
 	l.len++
 }
 
-func (l *singlyLinkedList) getAt(pos int) *sllNode {
-	ptr := l.head
+func (l *singlyLinkedList) delete_at(pos int) {
 	if pos < 0 {
-		return ptr
+		return
 	}
-	if pos > (l.len - 1) {
-		return nil
+	if l.len == 0 {
+		return
 	}
-	for i := 0; i < pos; i++ {
-		ptr = ptr.next
+	if pos > l.len {
+		return
 	}
-	return ptr
-}
-
-func (l *singlyLinkedList) traverse() {
-	ptr := l.head
-	for i := 0; i < l.len; i++ {
-		fmt.Println("Node :", ptr)
-		ptr = ptr.next
+	prevNode := l.getAt(pos - 1)
+	if prevNode == nil {
+		return
 	}
+	prevNode.next = l.getAt(pos).next
+	l.len--
 }
