@@ -15,6 +15,7 @@ func staticSequenceArray() {
 	fmt.Println("items :", static1.iter_seq())
 }
 
+//using singly linked list
 func dynamicSequenceLinkedList() {
 	ll1 := singlyLinkedList{}
 	ll1.insert(3)
